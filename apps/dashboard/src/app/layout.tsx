@@ -3,6 +3,7 @@ import { Inter, Open_Sans } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { QueryProvider } from "@/providers/QueryProvider";
 import { AuthProvider } from "@/providers/AuthProvider";
+import { ToastProvider } from "@tavvio/ui";
 import "./globals.css";
 import { ToastProvider } from "@tavvio/ui";
 
@@ -35,11 +36,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${openSans.variable} antialiased`}>
         <ThemeProvider>
-          <ToastProvider>
-            <QueryProvider>
-              <AuthProvider>{children}</AuthProvider>
-            </QueryProvider>
-          </ToastProvider>
+          <QueryProvider>
+            <AuthProvider>
+              <ToastProvider>{children}</ToastProvider>
+            </AuthProvider>
+          </QueryProvider>
         </ThemeProvider>
       </body>
     </html>
