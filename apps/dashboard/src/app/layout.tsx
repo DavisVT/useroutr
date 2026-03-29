@@ -3,7 +3,6 @@ import { Inter, Open_Sans } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { QueryProvider } from "@/providers/QueryProvider";
 import { AuthProvider } from "@/providers/AuthProvider";
-import { ToastProvider } from "@tavvio/ui";
 import "./globals.css";
 import { ToastProvider } from "@tavvio/ui";
 
