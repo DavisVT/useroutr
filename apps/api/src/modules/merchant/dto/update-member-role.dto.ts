@@ -3,5 +3,5 @@ import { TeamRole } from '../../../../generated/prisma/client';
 
 export class UpdateMemberRoleDto {
   @IsEnum(TeamRole)
-  role: TeamRole;
+  role!: TeamRole;
 }

@@ -1,9 +1,14 @@
 import { InjectRedis } from '@nestjs-modules/ioredis';
-import { Injectable, Logger, ConflictException, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  ConflictException,
+  NotFoundException,
+} from '@nestjs/common';
 import Redis from 'ioredis';
 import { StellarService } from '../stellar/stellar.service';
 import { PrismaService } from '../prisma/prisma.service';
-import { Quote } from '../../generated/prisma';
+import { Quote } from '../../../generated/prisma/client';
 
 @Injectable()
 export class QuotesService {
@@ -27,17 +32,17 @@ export class QuotesService {
     const quote = await this.findById(quoteId);
 
     if (quote.used) {
-        throw new ConflictException('Quote has already been used');
+      throw new ConflictException('Quote has already been used');
     }
 
     if (new Date() > quote.expiresAt) {
-        throw new ConflictException('Quote has expired');
+      throw new ConflictException('Quote has expired');
     }
 
     // Mark as used
     return this.prisma.quote.update({
-        where: { id: quoteId },
-        data: { used: true },
+      where: { id: quoteId },
+      data: { used: true },
     });
   }
 }

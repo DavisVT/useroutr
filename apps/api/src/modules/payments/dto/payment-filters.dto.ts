@@ -1,5 +1,12 @@
-import { IsOptional, IsEnum, IsISO8601, IsString, IsNumber, IsIn } from 'class-validator';
-import { PaymentStatus } from '../../../generated/prisma';
+import {
+  IsOptional,
+  IsEnum,
+  IsISO8601,
+  IsString,
+  IsNumber,
+  IsIn,
+} from 'class-validator';
+import { PaymentStatus } from '../../../../generated/prisma/client';
 
 export class PaymentFiltersDto {
   @IsEnum(PaymentStatus)
@@ -8,11 +15,11 @@ export class PaymentFiltersDto {
 
   @IsISO8601()
   @IsOptional()
-  from?: string;      // ISO date
+  from?: string; // ISO date
 
   @IsISO8601()
   @IsOptional()
-  to?: string;        // ISO date
+  to?: string; // ISO date
 
   @IsString()
   @IsOptional()
@@ -28,7 +35,7 @@ export class PaymentFiltersDto {
 
   @IsString()
   @IsOptional()
-  search?: string;    // search by ID, customer email
+  search?: string; // search by ID, customer email
 
   @IsNumber()
   @IsOptional()
